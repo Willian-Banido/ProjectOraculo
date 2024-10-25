@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oráculo - Lista de Arquivos</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <header>
         <div class="top-bar">
-            <!-- Substituir o título "Oráculo" pela imagem PNG -->
-            <img src="IMAGENS/logooraculo.png" alt="Oráculo" class="logo">
+            <img src="IMAGENS/logo Oráculo.png" alt="Oráculo" class="logo">
             <div class="turma-info">
-                <span>APB 029.002</span>
+                <span>  APB 029.002</span>
                 <span>Turma</span>
             </div>
         </div>
@@ -20,21 +19,65 @@
 
     <main class="container">
         <h2>UNIDADES CURRICULARES</h2>
+
         <div class="search-bar">
-            <input type="text" placeholder="Educação para o trabalho">
+            <input type="text" id="searchInput" placeholder="Digite o nome do arquivo requerido">
             <button type="submit">&#128269;</button>
         </div>
 
-        <!-- Placeholder para os dados que virão da API -->
-        <div class="api-placeholder">
-            <p>Aguardando os dados...</p>
-            <div class="loader"></div>
+        <!-- Arquivos carregados aparecerão aqui como cards --> 
+        <div class="file-list">
+            <ul id="fileList"></ul>
         </div>
 
         <div class="actions">
-            <button class="btn">Voltar</button>
             <button class="btn download">Baixar Arquivo</button>
+            <button class="btn">Voltar</button>
         </div>
     </main>
+
+    <script>
+        // Função para carregar os arquivos automaticamente
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarArquivos();
+        });
+
+        function carregarArquivos() {
+            fetch('https://script.google.com/macros/s/AKfycbyFKcQYIS865TzBzoJqKYC9tkAlZehX3PzVhYVD2wHB/dev') // URL da API do Google Apps Script
+                .then(response => response.json())
+                .then(data => {
+                    const fileList = document.getElementById('fileList');
+                    fileList.innerHTML = ''; // Limpar lista anterior
+
+                    data.forEach(file => {
+                        const li = document.createElement('li');
+                        li.classList.add('file-card');
+                        li.innerHTML = `
+                            <a href="${file.url}" target="_blank">${file.name}</a>
+                            <p>${new Date(file.modifiedTime).toLocaleDateString()}</p>
+                        `;
+                        fileList.appendChild(li);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                });
+        }
+
+        // Função para filtrar arquivos conforme a pesquisa
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const fileList = document.querySelectorAll('#fileList li');
+
+            fileList.forEach(file => {
+                const fileName = file.querySelector('a').innerText.toLowerCase();
+                if (fileName.includes(searchValue)) {
+                    file.style.display = '';
+                } else {
+                    file.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

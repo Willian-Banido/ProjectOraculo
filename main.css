@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     color: #ffffff;
 }
 
@@ -14,15 +14,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .container {
-    width: 1000px;
-    padding: 20px;
     background-color: #2b272c;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 1200px;
+    max-width: 100%;
+    min-height: 480px;
 }
 
 h1, h2 {
@@ -66,35 +69,62 @@ h1, h2 {
     cursor: pointer;
 }
 
-/* Estilo provisório para a área de carregamento da API */
-.api-placeholder {
+/* Estilo dos "cards" para os arquivos carregados */
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.file-list li {
+    list-style: none;
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 200px;
-    margin: 20px 0;
-    color: #ffffff;
+    transition: transform 0.2s;
 }
 
-.loader {
-    border: 6px solid #f3f3f3; /* Light grey */
-    border-top: 6px solid #4e00b6; /* Purple */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
+.file-list li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.file-list a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.file-list a:hover {
+    color: #8d05db;
+    transition: color 0.3s;
+}
+
+.file-list p {
+    font-size: 12px;
+    color: #bbb;
+}
+
+/* Estilo da logo (Ajuste de tamanho e espaçamento) */
+.logo {
+    height: 200px; /* Ajuste o tamanho da logo conforme necessário */
+    width: auto;
+    align-items: top;
 }
 
 .actions {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
+    align-items: end;
 }
 
 .actions .btn {
@@ -104,6 +134,7 @@ h1, h2 {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+    align-items: baseline;
 }
 
 .actions .btn.download {
@@ -113,10 +144,4 @@ h1, h2 {
 .actions .btn:hover {
     background-color: #8d05db;
     transition: background-color 0.3s;
-}
-
-/* Estilo da Logo (Ajuste de Tamanho e Espaçamento) */
-.logo {
-    height: 1px; /* Ajuste o tamanho da logo conforme necessário */
-    width: auto;
 }
