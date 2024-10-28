@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+    color: #ffffff;
+}
+
+body {
+    background: linear-gradient(to right, #1f152b, #271b2e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    background-color: #2b272c;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    width: 80%; 
+    max-width: 1200px;
+    height: 700px;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2 {
+    color: #fff;
+    text-align: center;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    width:auto;
+    height: 220px;
+    text-size-adjust: 1000px;
+
+}
+
+.logo {
+    height: 220px; 
+    width: auto;
+    margin-right: 20px;
+}
+
+.turma-info {
+    font-size: 14px;
+    text-align: right;
+    margin-left: auto;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    size: 100px;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #1f1f1f;
+    color: #fff;
+    width: 300px;
+}
+
+.search-bar button {
+    background-color: #4e00b6;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 5px;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+/* Estilo dos "cards" para os arquivos carregados */
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.file-list li {
+    list-style: none;
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.file-list li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.file-list a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.file-list a:hover {
+    color: #8d05db;
+    transition: color 0.3s;
+}
+
+.file-list p {
+    font-size: 12px;
+    color: #bbb;
+    text-align: center;
+}
+
+/* Estilo para o botão de ações */
+.actions {
+    display: flex;
+    justify-content:flex-end;
+    margin-top: auto;
+}
+
+.actions .btn {
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.actions .btn.download {
+    background-color: #4e00b6;
+    margin-left: 10px;
+}
+
+.actions .btn:hover {
+    background-color: #8d05db;
+    transition: background-color 0.3s;
+}

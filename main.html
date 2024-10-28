@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oráculo - Lista de Arquivos</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <img src="IMAGENS/logo Oráculo.png" alt="Oráculo" class="logo">
+            <div class="turma-info">
+                <span>  APB 029.002</span>
+                <span>Turma</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>UNIDADES CURRICULARES</h2>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Digite o nome do arquivo requerido">
+            <button type="submit">&#128269;</button>
+        </div>
+
+        <!-- Mensagem de erro que aparecerá em caso de falha na requisição -->
+        <div class="error-message" style="display: none; color: red; text-align: center; margin-top: 20px;">
+            Não foi possível carregar os arquivos. Por favor, tente novamente mais tarde.
+        </div>
+
+        <!-- Arquivos carregados aparecerão aqui como cards --> 
+        <div class="file-list">
+            <ul id="fileList"></ul>
+        </div>
+
+        <div class="actions">
+            <button class="btn">Voltar</button>
+            <button class="btn download">Baixar Arquivo</button>
+        </div>
+    </main>
+
+    <script>
+        // Função para carregar os arquivos automaticamente
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarArquivos();
+        });
+
+        function carregarArquivos() {
+            console.log("Iniciando requisição para a API...");
+
+            fetch('https://script.google.com/macros/s/AKfycbyFKcQYIS865TzBzoJqKYC9tkAlZehX3PzVhYVD2wHB/dev')
+                .then(response => {
+                    console.log("Resposta recebida:", response);
+
+                    if (!response.ok) {
+                        throw new Error(`Erro na resposta da API: ${response.status}`);
+                    }
+
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Dados recebidos da API:", data);
+
+                    const fileList = document.getElementById('fileList');
+                    fileList.innerHTML = ''; // Limpar lista anterior
+
+                    data.forEach(file => {
+                        const li = document.createElement('li');
+                        li.classList.add('file-card');
+                        li.innerHTML = `
+                            <a href="${file.url}" target="_blank">${file.name}</a>
+                            <p>${new Date(file.modifiedTime).toLocaleDateString()}</p>
+                        `;
+                        fileList.appendChild(li);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar arquivos:', error);
+                    
+                    // Mostrar a mensagem de erro no HTML
+                    const errorMessage = document.querySelector('.error-message');
+                    errorMessage.style.display = 'block';
+                });
+        }
+
+        // Função para filtrar arquivos conforme a pesquisa
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const fileList = document.querySelectorAll('#fileList li');
+
+            fileList.forEach(file => {
+                const fileName = file.querySelector('a').innerText.toLowerCase();
+                if (fileName.includes(searchValue)) {
+                    file.style.display = '';
+                } else {
+                    file.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
