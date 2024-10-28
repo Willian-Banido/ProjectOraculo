@@ -24,9 +24,10 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
-    width: 768px;
+    width: 1000px;
     max-width: 100%;
     min-height: 480px;
+    padding: 20px; /* Adicionado padding */
 }
 
 .container p {
@@ -75,7 +76,7 @@ body {
 }
 
 .container form {
-    background-color: #2b272c;;
+    background-color: #2b272c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,8 +86,8 @@ body {
 }
 
 .container input {
-    background-color: rgba(50, 50, 50, 0.8); /* Tom de grafite escuro com opacidade */
-    color: #ffffff; /* Texto branco para melhor contraste */
+    background-color: rgba(50, 50, 50, 0.8);
+    color: #ffffff;
     border: none;
     margin: 8px 0;
     padding: 10px 15px;
@@ -96,134 +97,40 @@ body {
     outline: none;
 }
 
-.form-container {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    transition: all 0.6s ease-in-out;
-}
-
-.sign-in {
-    left: 0;
-    z-index: 2;
-}
-
-.container.active .sign-in {
-    transform: translateX(100%);
-}
-
-.sign-up {
-    left: 0;
-    opacity: 0;
-    z-index: 1;
-}
-
-.container.active .sign-up {
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-    animation: move 0.6s;
-}
-
-@keyframes move {
-    0%, 49.99% {
-        opacity: 0;
-        z-index: 1;
-    }
-    50%, 100% {
-        opacity: 1;
-        z-index: 5;
-    }
-}
-
-.social-icons {
-    margin: 20px 0;
-}
-
-.social-icons a {
-    border: 1px solid #ccc;
-    border-radius: 20%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 3px;
-    width: 40px;
-    height: 40px;
-}
-
-.social-icons a:hover {
-    background-color: #f0f0f0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transform: scale(1.1);
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.toggle-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: all 0.6s ease-in-out;
-    border-radius: 150px 0 0 100px;
-    z-index: 1000;
-}
-
-.container.active .toggle-container {
-    transform: translateX(-100%);
-    border-radius: 0 150px 100px 0;
-}
-
-.toggle {
-    background-color: #512da8;
-    height: 100%;
-    background: linear-gradient(to left, rgb(174, 0, 255), rgb(102, 2, 105));
-    color: #fff;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
-}
-
-.container.active .toggle {
-    transform: translateX(50%);
-}
-
-.toggle-panel {
-    position: absolute;
-    width: 50%;
-    height: 100%;
+.file-list {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 30px;
-    text-align: center;
-    top: 0;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
+    flex-wrap: wrap; /* Permitir que os cards se movam para a próxima linha */
+    justify-content: space-between; /* Espaço entre os cards */
+    margin-top: 20px;
 }
 
-.toggle-left {
-    transform: translateX(-200%);
+.file-list li {
+    width: calc(32% - 10px); /* 3 cards por linha com espaço entre eles */
+    background-color: #3a3437; /* Cor de fundo dos cards */
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px; /* Margem entre os cards */
+    text-align: center; /* Centralizar conteúdo */
 }
 
-.container.active .toggle-left {
-    transform: translateX(0);
+.file-card img {
+    width: 100%; /* Imagem ocupa 100% do card */
+    border-radius: 5px; /* Bordas arredondadas nas imagens */
 }
 
-.toggle-right {
-    right: 0;
-    transform: translateX(0);
+.image-checkbox {
+    width: 24px; /* Largura do checkbox */
+    height: 24px; /* Altura do checkbox */
+    border-radius: 50%; /* Checkbox redondo */
+    margin-bottom: 5px; /* Espaçamento abaixo do checkbox */
 }
 
-.container.active .toggle-right {
-    transform: translateX(200%);
+.image-checkbox:checked {
+    background-color: #4caf50; /* Cor de fundo quando selecionado */
 }
+
+.actions {
+    margin-top: 20px; /* Espaçamento acima das ações */
+}
+
+/* Resto do CSS não modificado */

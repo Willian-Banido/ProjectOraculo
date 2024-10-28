@@ -42,7 +42,6 @@ h1, h2 {
     width:auto;
     height: 220px;
     text-size-adjust: 1000px;
-
 }
 
 .logo {
@@ -88,10 +87,17 @@ h1, h2 {
 /* Estilo dos "cards" para os arquivos carregados */
 .file-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin: 20px 0;
+    flex-direction: column; /* Alinha em coluna */
+    overflow-y: auto; /* Permite rolagem vertical */
+    height: 100%; /* Usa toda a altura disponível */
+}
+
+.file-list ul {
+    display: flex;
+    flex-direction: column; /* Para alinhar verticalmente */
+    gap: 20px; /* Espaçamento entre os cards */
+    margin: 20px 0; /* Margem superior e inferior */
+    padding: 0; /* Remove padding padrão */
 }
 
 .file-list li {
@@ -100,7 +106,7 @@ h1, h2 {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 200px;
+    width: 100%; /* Preenche toda a largura do contêiner */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,7 +140,7 @@ h1, h2 {
 /* Estilo para o botão de ações */
 .actions {
     display: flex;
-    justify-content:flex-end;
+    justify-content: flex-end;
     margin-top: auto;
 }
 
@@ -145,7 +151,6 @@ h1, h2 {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    
 }
 
 .actions .btn.download {

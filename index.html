@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oráculo - Lista de Arquivos</title>
+    <title>Oráculo - Galeria de Imagens da NASA</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -11,87 +11,95 @@
         <div class="top-bar">
             <img src="IMAGENS/logo Oráculo.png" alt="Oráculo" class="logo">
             <div class="turma-info">
-                <span>  APB 029.002</span>
+                <span>APB 029.002</span>
                 <span>Turma</span>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <h2>UNIDADES CURRICULARES</h2>
+        <h2>GALERIA DE IMAGENS DA NASA</h2>
 
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Digite o nome do arquivo requerido">
-            <button type="submit">&#128269;</button>
+            <input type="text" id="searchInput" placeholder="Digite sua pesquisa">
+            <button type="submit" onclick="carregarImagens()">&#128269;</button>
         </div>
 
-        <!-- Mensagem de erro que aparecerá em caso de falha na requisição -->
         <div class="error-message" style="display: none; color: red; text-align: center; margin-top: 20px;">
-            Não foi possível carregar os arquivos. Por favor, tente novamente mais tarde.
+            Não foi possível carregar as imagens. Por favor, tente novamente mais tarde.
         </div>
 
-        <!-- Arquivos carregados aparecerão aqui como cards --> 
         <div class="file-list">
             <ul id="fileList"></ul>
         </div>
 
         <div class="actions">
-            <button class="btn">Voltar</button>
-            <button class="btn download">Baixar Arquivo</button>
+            <button class="btn" onclick="baixarImagens()">Baixar Imagens Selecionadas</button>
         </div>
     </main>
 
     <script>
-        // Função para carregar os arquivos automaticamente
-        document.addEventListener('DOMContentLoaded', function() {
-            carregarArquivos();
-        });
+        const BASE_URL = 'https://images-api.nasa.gov/search'; // URL da API da NASA
 
-        function carregarArquivos() {
-            console.log("Iniciando requisição para a API...");
+        function carregarImagens(query = 'galaxy') {
+            console.log("Iniciando requisição para a API da NASA...");
 
-            fetch('https://script.google.com/macros/s/AKfycby367h18mEb8n69r3rZouzHIp7u3_4nUY5mJszHehFhNBtL03oAwoZ9JGrgAFLj4Q_jXA/exec')
-                .then(response => {
-                    console.log("Resposta recebida:", response);
+            fetch(`${BASE_URL}?q=${encodeURIComponent(query)}`)
+            .then(response => {
+                console.log("Resposta recebida:", response);
 
-                    if (!response.ok) {
-                        throw new Error(`Erro na resposta da API: ${response.status}`);
-                    }
+                if (!response.ok) {
+                    throw new Error(`Erro na resposta da API: ${response.status}`);
+                }
 
-                    return response.json();
-                })
-                .then(data => {
-                    console.log("Dados recebidos da API:", data);
+                return response.json();
+            })
+            .then(data => {
+                console.log("Dados recebidos da API:", data);
 
-                    const fileList = document.getElementById('fileList');
-                    fileList.innerHTML = ''; // Limpar lista anterior
+                const fileList = document.getElementById('fileList');
+                fileList.innerHTML = ''; // Limpar lista anterior
 
-                    data.forEach(file => {
-                        const li = document.createElement('li');
-                        li.classList.add('file-card');
-                        li.innerHTML = `
-                            <a href="${file.url}" target="_blank">${file.name}</a>
-                            <p>${new Date(file.modifiedTime).toLocaleDateString()}</p>
-                        `;
-                        fileList.appendChild(li);
-                    });
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar arquivos:', error);
-                    
-                    // Mostrar a mensagem de erro no HTML
-                    const errorMessage = document.querySelector('.error-message');
-                    errorMessage.style.display = 'block';
+                // Exibir as imagens retornadas
+                const items = data.collection.items;
+                items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.classList.add('file-card');
+                    const imageUrl = item.links[0].href; // URL da imagem
+                    li.innerHTML = `
+                        <input type="checkbox" class="image-checkbox" value="${imageUrl}">
+                        <img src="${imageUrl}" alt="${item.data[0].title}">
+                        <p>${item.data[0].title}</p>
+                    `;
+                    fileList.appendChild(li);
                 });
+            })
+            .catch(error => {
+                console.error('Erro ao carregar imagens:', error);
+                const errorMessage = document.querySelector('.error-message');
+                errorMessage.style.display = 'block';
+            });
         }
 
-        // Função para filtrar arquivos conforme a pesquisa
+        function baixarImagens() {
+            const checkboxes = document.querySelectorAll('.image-checkbox:checked');
+            checkboxes.forEach(checkbox => {
+                const link = document.createElement('a');
+                link.href = checkbox.value;
+                link.download = ''; // Nome do arquivo será o padrão da URL
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        }
+
+        // Função para filtrar imagens conforme a pesquisa
         document.getElementById('searchInput').addEventListener('input', function() {
             const searchValue = this.value.toLowerCase();
             const fileList = document.querySelectorAll('#fileList li');
 
             fileList.forEach(file => {
-                const fileName = file.querySelector('a').innerText.toLowerCase();
+                const fileName = file.querySelector('p').innerText.toLowerCase();
                 if (fileName.includes(searchValue)) {
                     file.style.display = '';
                 } else {
@@ -99,6 +107,12 @@
                 }
             });
         });
+
+        // Carregar imagens ao abrir a página
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarImagens(); // Exemplo de pesquisa inicial
+        });
     </script>
+
 </body>
 </html>
