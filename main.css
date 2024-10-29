@@ -21,7 +21,7 @@ body {
     background-color: #2b272c;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    width: 80%; 
+    width: 80%;
     max-width: 1200px;
     height: 700px;
     padding: 20px;
@@ -84,20 +84,23 @@ h1, h2 {
     border-radius: 5px;
 }
 
-/* Estilo dos "cards" para os arquivos carregados */
 .file-list {
     display: flex;
-    flex-direction: column; /* Alinha em coluna */
-    overflow-y: auto; /* Permite rolagem vertical */
-    height: 100%; /* Usa toda a altura disponível */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: auto;
+    height: 98%;
+    width: 100%;
+    margin-block-end: 10px;
 }
 
 .file-list ul {
     display: flex;
-    flex-direction: column; /* Para alinhar verticalmente */
-    gap: 20px; /* Espaçamento entre os cards */
-    margin: 20px 0; /* Margem superior e inferior */
-    padding: 0; /* Remove padding padrão */
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 0;
+    width: 100%;
 }
 
 .file-list li {
@@ -106,11 +109,13 @@ h1, h2 {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 100%; /* Preenche toda a largura do contêiner */
+    width: calc(32% - 10px); /* Ajuste para 3 cards por linha */
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: transform 0.2s;
+    position: relative;
 }
 
 .file-list li:hover {
@@ -118,17 +123,12 @@ h1, h2 {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-.file-list a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.file-list a:hover {
-    color: #8d05db;
-    transition: color 0.3s;
+.file-list li img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .file-list p {
@@ -137,7 +137,6 @@ h1, h2 {
     text-align: center;
 }
 
-/* Estilo para o botão de ações */
 .actions {
     display: flex;
     justify-content: flex-end;
@@ -161,4 +160,40 @@ h1, h2 {
 .actions .btn:hover {
     background-color: #8d05db;
     transition: background-color 0.3s;
+}
+
+.file-list li input[type="checkbox"] {
+    display: none;
+}
+
+.file-list li .checkmark {
+    width: 20px;
+    height: 20px;
+    background-color: #5e5e5e;
+    border-radius: 5px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-list li input[type="checkbox"]:checked + .checkmark {
+    background-color: #4e00b6;
+}
+
+.file-list li .checkmark:after {
+    content: "";
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.file-list li input[type="checkbox"]:checked + .checkmark:after {
+    display: block;
 }

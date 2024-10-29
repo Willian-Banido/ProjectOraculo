@@ -63,16 +63,18 @@
                 // Exibir as imagens retornadas
                 const items = data.collection.items;
                 items.forEach(item => {
-                    const li = document.createElement('li');
-                    li.classList.add('file-card');
-                    const imageUrl = item.links[0].href; // URL da imagem
-                    li.innerHTML = `
-                        <input type="checkbox" class="image-checkbox" value="${imageUrl}">
-                        <img src="${imageUrl}" alt="${item.data[0].title}">
-                        <p>${item.data[0].title}</p>
-                    `;
-                    fileList.appendChild(li);
-                });
+    const li = document.createElement('li');
+    li.classList.add('file-card');
+    const imageUrl = item.links[0].href; // URL da imagem
+    li.innerHTML = `
+        <input type="checkbox" class="image-checkbox" value="${imageUrl}">
+        <span class="checkmark"></span>
+        <img src="${imageUrl}" alt="${item.data[0].title}">
+        <p>${item.data[0].title}</p>
+    `;
+    fileList.appendChild(li);
+});
+
             })
             .catch(error => {
                 console.error('Erro ao carregar imagens:', error);
