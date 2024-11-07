@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oráculo</title>
+    <link rel="stylesheet" type="text/css" href="Login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container sign-in" id="login-form">
+            <form>
+                <h2>Bem-vindo(a)!</h2>
+                <p>Insira seus dados de login e Entre nessa Aventura!</p>
+                <input type="text" placeholder="Usuário">
+                <input type="password" placeholder="Senha">
+                <button>ENTRAR</button>
+            </form>
+        </div>
+        <div class="form-container sign-up" id="register-form">
+            <form>
+                <h2>Criar Conta</h2>
+                <button class="social-button">Google</button>
+                <button class="social-button">GitHub</button>
+                <input type="text" placeholder="Nome">
+                <input type="text" placeholder="Email">
+                <input type="password" placeholder="Senha">
+                <button>CADASTRAR-SE</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h2>Já tem uma conta?</h2>
+                    <p>Para se manter conectado com a gente, por favor faça o login com suas informações pessoais.</p>
+                    <button class="ghost" id="signIn">Login</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h2>Olá, Amigo!</h2>
+                    <p>Insira seus dados pessoais e comece sua jornada conosco!</p>
+                    <button class="ghost" id="signUp">Registrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
