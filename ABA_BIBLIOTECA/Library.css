@@ -1,0 +1,462 @@
+* { 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f6f8fa; /* Cor de fundo clara do GitHub */
+    color: #24292e; /* Cor do texto do GitHub */
+    font-family: 'Inter', sans-serif; /* Fonte Inter */
+    transition: background-color 0.3s, color 0.3s; /* Suaviza a transição entre temas */
+}
+
+body.dark-mode {
+    background-color: #212121; /* Cor de fundo escura */
+    color: #ffffff; /* Texto branco no modo escuro */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #ffffff; /* Fundo do cabeçalho */
+    border-bottom: 1px solid #e1e4e8; /* Borda inferior do cabeçalho */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+body.dark-mode header {
+    background-color: #333333; /* Fundo do cabeçalho no modo escuro */
+    border-bottom: 1px solid #444444; /* Borda inferior no modo escuro */
+}
+
+header h1 {
+    font-size: 22px; /* Diminuindo o tamanho da fonte */
+    margin-right: 20px;
+    font-weight: normal; /* Não deixar em negrito */
+}
+
+.search-label {
+    display: flex; /* Usar flexbox para centralização */
+    justify-content: center; /* Centraliza o conteúdo */
+    margin-top: 20px; /* Espaço acima do campo de busca */
+}
+
+.search-label input {
+    padding: 8px 12px;
+    border: 1px solid #e1e4e8; /* Borda do campo de busca */
+    border-radius: 4px;
+    width: 400px; /* Largura do campo de busca */
+    margin: auto; /* Centraliza o campo de busca dentro do flex container */
+}
+
+.search-label input:focus {
+    outline: none; /* Remove o contorno padrão */
+    border-color: #0366d6; /* Cor da borda ao focar */
+}
+
+body.dark-mode .search-label input {
+    background-color: #444444; /* Fundo do campo de busca no modo escuro */
+    color: #ffffff; /* Texto branco no campo de busca no modo escuro */
+    border-color: #666666; /* Cor da borda no modo escuro */
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+label input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Estilo do contêiner do card e da lista */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body.dark-mode .ag-courses-item_date-box {
+    color: #aaaaaa; /* Cor do texto secundário no modo escuro */
+}
+
+footer {
+    text-align: left;
+    padding: 20px;
+    background-color: #ffffff; /* Fundo do rodapé */
+    border-top: 1px solid #e1e4e8; /* Borda superior do rodapé */
+    margin-top: 20px; /* Espaço acima do rodapé */
+}
+
+body.dark-mode footer {
+    background-color: #333333; /* Fundo do rodapé no modo escuro */
+}
+
+footer p {
+    color: #586069; /* Cor do texto do rodapé */
+    font-size: 12px; /* Diminuindo o tamanho do texto */
+}
+
+body.dark-mode footer p {
+    color: #aaaaaa; /* Cor do texto do rodapé no modo escuro */
+}
+
+
+
+/* Estilo do Modal */
+.modal {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Fundo branco do modal */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #e1e4e8;
+    width: 80%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima do modal */
+    border-radius: 8px; /* Cantos arredondados */
+}
+
+body.dark-mode .modal-content {
+    background-color: #444444; /* Fundo do modal no modo escuro */
+    border: 1px solid #666666; /* Borda do modal no modo escuro */
+}
+
+.modal-content h2 {
+    font-size: 18px; /* Tamanho do título do modal */
+    font-weight: normal; /* Não deixar em negrito */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo dos cards dos livros */
+.book-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem em múltiplas linhas */
+    justify-content: space-between; /* Espaçamento entre os cards */
+}
+
+.book-card {
+    background-color: #f6f8fa; /* Fundo claro dos cards */
+    border: 1px solid #e1e4e8; /* Borda dos cards */
+    border-radius: 6px; /* Cantos arredondados */
+    margin: 10px; /* Margem entre os cards */
+    padding: 15px; /* Espaçamento interno dos cards */
+    width: calc(33.333% - 20px); /* Largura dos cards */
+    transition: box-shadow 0.2s; /* Transição suave para a sombra */
+}
+
+.book-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+body.dark-mode .book-card {
+    background-color: #444444; /* Fundo dos cards no modo escuro */
+    border: 1px solid #666666; /* Borda dos cards no modo escuro */
+}
+
+.book-card h3 {
+    font-size: 16px; /* Diminuindo o tamanho do título do livro */
+    margin-bottom: 10px; /* Espaço abaixo do título */
+    font-weight: normal; /* Não deixar em negrito */
+}
+
+.book-card p {
+    font-size: 12px; /* Diminuindo o tamanho do texto da descrição do livro */
+}
+
+.download-btn {
+    padding: 0.4rem 1.6rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    border-radius: 0.3rem;
+    font-weight: 600;
+    background-color: rgba(212, 212, 212, 0.953);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+    height: 30px;
+    width: 100px;
+    margin-top: 2px;
+}
+
+.download-btn .text {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.4s ease-in-out;
+    color: rgb(50, 50, 50);
+}
+
+.download-btn .svg {
+    transform: translateY(-20px) rotate(30deg);
+    opacity: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: 0.4s ease-in-out;
+}
+
+.download-btn:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+.download-btn:hover .svg {
+    display: inline-block;
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+}
+
+.download-btn:hover .text {
+    opacity: 0; /* Deixa o texto invisível no hover */
+}
+
+.download-btn:active {
+    scale: 0.97;
+}
+
+
+
+.book-card a {
+    display: inline-block; /* Para o botão de download */
+    margin-top: 10px; /* Espaço acima do botão */
+    padding: 10px 15px; /* Espaçamento do botão */
+    background-color: #f8f8f8; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    border-radius: 4px; /* Cantos arredondados */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+.book-card a:hover {
+    background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
+}
+
+body.dark-mode .book-card a {
+    background-color: #0056b3; /* Cor de fundo do botão no modo escuro */
+}
+
+body.dark-mode .book-card a:hover {
+    background-color: #007bff; /* Cor de fundo do botão ao passar o mouse no modo escuro */
+}
+
+
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 1.5em;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1f1f1f;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    transition: .4s;
+    border-radius: 5px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 0.8em;
+    width: 0.1em;
+    border-radius: 0px;
+    left: 0.3em;
+    bottom: 0.3em;
+    background-color: rgb(131, 131, 131);
+    transition: .7s;
+  }
+  
+  input:checked + .slider {
+    background-color: #ffffff;
+    box-shadow: inset 2px 5px 10px rgb(0, 0, 0);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(2.8em) rotate(360deg);
+  }
+
+
+  /* From Uiverse.io by vinodjangid07 */ 
+.BtnInsta {
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .4s;
+    cursor: pointer;
+    position: relative;
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    overflow: hidden;
+    margin-top: 15px;
+    
+  }
+  
+  .svgIconInsta {
+    transition-duration: .3s;
+  }
+  
+  .svgIconInsta path {
+    fill: white;
+  }
+  
+  .text {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    width: 120px;
+    font-weight: 600;
+    opacity: 0;
+    transition-duration: .4s;
+  }
+  
+  .BtnInsta:hover {
+    width: 110px;
+    transition-duration: .4s;
+    border-radius: 30px;
+  }
+  
+  .BtnInsta:hover .text {
+    opacity: 1;
+    transition-duration: .4s;
+  }
+  
+  .BtnInsta:hover .svgIconInsta {
+    opacity: 0;
+    transition-duration: .3s;
+  }
+
+
+
+
+
+
+
+
+
+  /* Definindo uma regra para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 768px) {
+    /* Ajuste no container de cards */
+    .ag-courses_box, .book-cards-container {
+        flex-direction: column; /* Coloca os cards em coluna no mobile */
+        align-items: center; /* Centraliza os cards */
+    }
+
+    /* Ajuste nos cards */
+    .ag-courses_item, .book-card {
+        width: 90%; /* Reduz a largura dos cards para ocupar menos espaço */
+        margin: 10px auto; /* Centraliza os cards e adiciona margem vertical */
+        padding: 10px; /* Reduz o padding para um visual mais compacto */
+    }
+
+    /* Tamanho do texto nos cards */
+    .ag-courses-item_title, .book-card h3 {
+        font-size: 14px; /* Diminui o tamanho do título */
+    }
+
+    .ag-courses-item_date-box, .book-card p {
+        font-size: 10px; /* Diminui o tamanho do texto secundário */
+    }
+
+    /* Ajuste do botão de download */
+    .download-btn {
+        height: 25px; /* Reduz a altura do botão */
+        width: 80px; /* Reduz a largura do botão */
+        font-size: 0.8rem; /* Ajusta o tamanho da fonte */
+    }
+
+    /* Reduz o tamanho da barra de pesquisa no mobile */
+    .search-label input {
+        width: 90%; /* Ajusta a largura para caber na tela */
+    }
+
+    /* Ajuste do cabeçalho */
+    header h1 {
+        font-size: 18px; /* Reduz o tamanho do título do cabeçalho */
+    }
+}
+
+
+/* Estilo geral da Navbar */
+.navbar {
+    background-color: #1f152b; /* Cor de fundo roxa */
+    padding: 10px 20px; /* Espaçamento interno */
+    display: flex; /* Alinha os itens da navbar */
+    justify-content: space-between; /* Espaço igual entre os itens */
+    align-items: center; /* Alinha os itens verticalmente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Links da Navbar */
+.navbar a {
+    color: white; /* Cor do texto branca */
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 16px; /* Tamanho da fonte */
+    margin-right: 20px; /* Espaçamento entre os links */
+    transition: color 0.3s ease; /* Transição suave na cor */
+}
+
+/* Remove o sublinhado ao passar o mouse */
+.navbar a:hover {
+    color: #0366d6; /* Cor azul clara quando o link for hovered */
+}
+
+/* Ajustes para dispositivos móveis (caso necessário) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Coloca os itens em coluna no mobile */
+        align-items: flex-start; /* Alinha à esquerda */
+    }
+
+    .navbar a {
+        margin-right: 0;
+        margin-bottom: 10px; /* Espaçamento inferior entre os links no mobile */
+    }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oráculo - Lista de Arquivos</title>
+    <link rel="stylesheet" href="/ABA_DRIVE/main.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="top-bar">
+            <img src="/IMAGENS/logo Oráculo.png" alt="Oráculo" class="logo">
+            <div class="turma-info">
+                <span> APB 029.002</span>
+                <span>Turma</span>
+            </div>
+            <nav>
+                <a href="/ABA_DRIVE/main.html">Drives</a>
+                <a href="/ABA_BIBLIOTECA/Library.html">Library</a>
+                <a href="#">Cursos</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="container">
+        <h2>UNIDADES CURRICULARES</h2>
+
+        <!-- Barra de pesquisa -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Digite o nome do arquivo requerido">
+            <button type="submit">&#128269;</button>
+        </div>
+
+        <!-- Mensagem de erro que aparecerá em caso de falha na requisição -->
+        <div class="error-message" style="display: none; color: red; text-align: center; margin-top: 20px;">
+            Não foi possível carregar os arquivos. Por favor, tente novamente mais tarde.
+        </div>
+
+        <!-- Arquivos carregados aparecerão aqui como cards -->
+        <div class="file-list">
+            <ul id="fileList"></ul>
+        </div>
+
+        <!-- Modal de Livros -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <h2 id="modal-title"></h2>
+                <ul id="book-list-modal"></ul>
+            </div>
+        </div>
+
+        <!-- Ações -->
+        <div class="actions">
+            <button class="btn">Voltar</button>
+            <button class="btn download">Baixar Arquivo</button>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Oráculo - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- Inclusão do arquivo JS -->
+    <script src="/ABA_DRIVE/main.js"></script>
+</body>
+</html>

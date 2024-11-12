@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+    color: #ffffff;
+}
+
+body {
+    background: url('/IMAGENS/BackGround.jpg') no-repeat center center fixed;
+    background-size: cover;  /* Ajusta a imagem de fundo para cobrir toda a tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #4e00b6; /* Fallback para o fundo roxo, caso a imagem não seja carregada */
+}
+
+.container {
+    background-color: rgba(71, 55, 75, 0.7);  /* Fundo escuro com transparência */
+    backdrop-filter: blur(3px);  /* Aplica o desfoque ao fundo */
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    width: 80%;
+    max-width: 1200px;
+    height: 700px;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    border-color: #ffffff;
+}
+
+h1, h2 {
+    color: #ffffff;  /* Garantir que os títulos sejam brancos */
+    text-align: center;
+}
+
+.top-bar {
+    display: flex;
+    align-items:start;
+    width: auto;
+    height: 80px;
+    text-size-adjust: 1000px;
+}
+
+.logo {
+    background-image: url('imagen/logo.jpg');
+    background-position: -50px -30px; /* Ajuste da posição da imagem */
+    background-size: cover;  /* Ajusta o tamanho da imagem */
+    width: 200px;
+    height: auto;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+    align-self: center;
+
+}
+
+.turma-info {
+    font-size: 25px;
+    text-align: right;
+    align-self: center;
+    padding-top: 20px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #1f1f1f;
+    color: #fff;
+    width: 300px;
+}
+
+.search-bar button {
+    background-color: #4e00b6;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 5px;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+/* Estilo dos "cards" para os arquivos carregados */
+.file-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards se movam para a linha seguinte */
+    gap: 15px; /* Espaçamento entre os cards */
+    margin-top: 20px;
+    max-height: 500px; /* Limita a altura da área de visualização */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
+    padding: 0; /* Retira qualquer padding padrão do container */
+}
+
+.file-list li {
+    list-style: none;
+    background-color: rgba(31, 31, 31, 0.8);  /* Fundo escuro com leve transparência */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: calc(33.333% - 15px); /* Cada card ocupa 1/3 da largura, menos o espaço de gap */
+    margin-bottom: 15px; /* Espaçamento entre as linhas de cards */
+    box-sizing: border-box; /* Garantir que padding e borda não ultrapassem o tamanho */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.file-list li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.file-list a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.file-list a:hover {
+    color: #8d05db;
+    transition: color 0.3s;
+}
+
+.file-list p {
+    font-size: 12px;
+    color: #bbb;
+    text-align: center;
+}
+
+
+.ag-courses_item {
+    background-color: #bdbdbd46;
+    padding: 15px;
+    width: 250px; /* Largura fixa para os cards */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0; /* Impede que os cards encolham */
+}
+
+.ag-courses-item_link {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ag-courses-item_link:hover {
+    color: #0366d6;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: rgba(84, 60, 88, 0.562);
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close-button {
+    font-size: 30px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: black;
+}
+
+/* Estilo para o botão de ações */
+.actions {
+    display: flex;
+    justify-content:flex-end;
+    margin-top: auto;
+}
+
+.actions .btn {
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actions .btn.download {
+    background-color: #4e00b6;
+    margin-left: 10px;
+}
+
+.actions .btn:hover {
+    background-color: #8d05db;
+    transition: background-color 0.3s;
+}
+
+footer {
+    background-color: #1f152b;
+    color: #fff;
+    text-align: start;
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    bottom: 0;  /* Fixa o footer no fundo da tela */
+    left: 0;    /* Alinha o footer à esquerda */
+    display: flex;
+    flex-direction: column-reverse;  /* Inverte a direção do conteúdo */
+    justify-content: flex-start;
+    align-items: center;
+}
+
+footer p {
+    margin: 10px;
+    align-self: center;
+}

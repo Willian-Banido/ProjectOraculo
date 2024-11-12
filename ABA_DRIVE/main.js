@@ -1,0 +1,107 @@
+// Função para carregar pastas do GitHub 
+async function fetchBooks() {
+    try {
+        const response = await fetch("https://api.github.com/repos/Vinis-San/books/contents");
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        const bookListContainer = document.getElementById('fileList');
+        bookListContainer.innerHTML = ""; // Limpa o conteúdo anterior
+
+        data.forEach(folder => {
+            if (folder.type === "dir") {
+                const folderCard = document.createElement("div");
+                folderCard.classList.add("ag-courses_item");
+
+                // Link que envolve todo o card
+                const folderLink = document.createElement("a");
+                folderLink.href = "#"; // Coloque a URL ou lógica para abrir a pasta aqui
+                folderLink.classList.add("ag-courses-item_link");
+
+                // Adiciona o nome da pasta como conteúdo do link
+                folderLink.textContent = folder.name;
+
+                folderCard.appendChild(folderLink);
+                bookListContainer.appendChild(folderCard);
+
+                // Adiciona o evento de clique no link
+                folderLink.addEventListener("click", function() {
+                    showBooks(folder.path); // Chama a função showBooks
+                });
+            }
+        });
+    } catch (error) {
+        console.error("Erro ao carregar pastas:", error);
+    }
+}
+
+// Função para mostrar livros da pasta selecionada
+async function showBooks(folderPath) {
+    try {
+        const response = await fetch(`https://api.github.com/repos/Vinis-San/books/contents/${folderPath}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        const modal = document.getElementById("modal");
+        const bookListModal = document.getElementById("book-list-modal");
+        const modalTitle = document.getElementById("modal-title");
+
+        modalTitle.textContent = `${folderPath.split('/').pop()}`;
+        bookListModal.innerHTML = ""; // Limpa o conteúdo anterior
+
+        data.forEach(book => {
+            if (book.type === "file" && book.name.endsWith('.pdf')) {
+                const listItem = document.createElement("li");
+                const bookNameWithoutExtension = book.name.replace('.pdf', '');
+
+                listItem.innerHTML = `
+                    <h3>${bookNameWithoutExtension}</h3>
+                    <button class="download-btn" onclick="window.open('${book.download_url}', '_blank')">
+                        <span class="text">Download</span>
+                        <div class="svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-download" viewBox="0 0 16 16"> 
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"></path> 
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"></path> 
+                            </svg>
+                        </div>
+                    </button>
+                `;
+                bookListModal.appendChild(listItem);
+            }
+        });
+
+        modal.style.display = "block"; // Abre o modal
+    } catch (error) {
+        console.error("Erro ao carregar livros:", error);
+    }
+}
+
+// Função para fechar o modal
+function closeModal() {
+    const modal = document.getElementById("modal");
+    modal.style.display = "none";
+}
+
+// Função para filtrar arquivos conforme a pesquisa
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchValue = this.value.toLowerCase();
+    const fileList = document.querySelectorAll('.ag-courses_item');
+
+    fileList.forEach(file => {
+        const fileName = file.querySelector('a').innerText.toLowerCase();
+        if (fileName.includes(searchValue)) {
+            file.style.display = '';
+        } else {
+            file.style.display = 'none';
+        }
+    });
+});
+
+// Carregar todos os arquivos ao carregar a página
+document.addEventListener("DOMContentLoaded", function() {
+    fetchBooks(); // Carregar os arquivos assim que a página carregar
+});
