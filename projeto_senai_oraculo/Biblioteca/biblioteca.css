@@ -14,7 +14,7 @@ body {
     
 }
 
-/* Header */
+
 header {
     display: flex;
     align-items: center;
@@ -71,7 +71,7 @@ header h1 {
     transform: translateX(14px);
 }
 
-/* Estilo do campo de busca */
+
 
 .containerinput{
     display: flex;
@@ -99,7 +99,7 @@ header h1 {
     border-color: #1DA1F2;
 }
 
-/* Contêiner dos cards */
+
 .ag-courses_box {
     display: flex;
     flex-wrap: wrap;
@@ -128,7 +128,7 @@ header h1 {
     font-weight: bold;
 }
 
-/* Modal */
+
 .modal {
     display: none;
     position: fixed;
@@ -166,7 +166,7 @@ header h1 {
     cursor: pointer;
 }
 
-/* Rodapé */
+
 footer {
     background-color: #0D6EFD;
     color: white;

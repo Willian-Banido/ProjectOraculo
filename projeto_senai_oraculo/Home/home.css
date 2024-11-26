@@ -58,20 +58,20 @@ main {
 
 .container_banner {
     width: 90%;
-    height: auto; /* Ajuste automático de altura */
+    height: auto; 
     background-color: rgb(41, 41, 41);
     margin: 10px;
     margin-top: 70px;
     margin-bottom: 150px;
     display: flex;
-    justify-content: center; /* Centralizar o iframe horizontalmente */
-    align-items: center; /* Centralizar o iframe verticalmente */
+    justify-content: center; 
+    align-items: center; 
 }
 
 .container_banner iframe {
     width: 100%;
-    height: calc(50vw * 9 / 16); /* Mantendo a proporção 16:9 */
-    max-width: 100%; /* Garantir que o iframe não ultrapasse a largura da container */
+    height: calc(50vw * 9 / 16); 
+    max-width: 100%; 
 }
 
 .containermaiorcards {
