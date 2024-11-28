@@ -1,8 +1,16 @@
 const express = require('express');
+const path = require('path');  // Certifique-se de importar o módulo 'path'
 const bcrypt = require('bcryptjs');
-const db = require('./JS/db'); // Importa a conexão com o banco
 const app = express();
 const port = 5500;
+
+// Serve arquivos estáticos da pasta "public"
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Rota de teste
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));  // Exibe o index.html na raiz
+});
 
 // Usando JSON para requisições
 app.use(express.json());
