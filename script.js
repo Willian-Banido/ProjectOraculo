@@ -5,3 +5,4 @@ document.getElementById('signIn').addEventListener('click', () => {
 document.getElementById('signUp').addEventListener('click', () => {
     document.querySelector('.container').classList.add('active');
 });
+
